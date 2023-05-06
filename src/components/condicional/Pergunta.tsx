@@ -4,8 +4,11 @@ import { IconCaretDown, IconCaretUp } from "@tabler/icons-react";
 import IfElse from "./IfElse";
 
 interface PerguntaProps{
+    indice: number
     texto: string
     resposta: string
+    aberta: boolean
+    alternarVisibilidade: (indice: number) => void
 }
 
 export default function Pergunta(props: PerguntaProps) {
@@ -16,11 +19,11 @@ export default function Pergunta(props: PerguntaProps) {
         <div className={`border border-zinc-600 rounded-md overflow-hidden
         `}>
             <div className="bg-zinc-800 p-5  cursor-pointer select-none flex justify-between"
-                 onClick={() => setAberta(!aberta)}
+                 onClick={() => props.alternarVisibilidade(props.indice)}
             >
                 <span>{props.texto}</span>
 
-                <IfElse teste={aberta}>
+                <IfElse teste={props.aberta}>
                     <IconCaretUp />
                     <IconCaretDown />
                 </IfElse>
@@ -29,7 +32,7 @@ export default function Pergunta(props: PerguntaProps) {
                 
             </div>
 
-            <If teste={aberta}>
+            <If teste={props.aberta}>
                 <div className="p-5" >
                     {props.resposta}
                 </div>
