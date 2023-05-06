@@ -13,5 +13,5 @@
 - [React] - Comunicação entre componentes (indireta)
 
 ## Aula 3
-- [React] - Rederização condicional
-- [React] - Rederização de listas
+- [React] - Renderização condicional
+- [React] - Renderização de listas
