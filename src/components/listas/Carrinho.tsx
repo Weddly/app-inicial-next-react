@@ -19,7 +19,7 @@ export default function Carrinho (props: CarrinhoProps) {
                 <span>Carrinho</span>
                 <span>{Moeda.formatar(total)}</span>
             </div>
-            <div className="flex gap-5 p-5">
+            <div className="flex flex-wrap gap-5 p-5">
                 {props.itens.length === 0 ? 
                     (
                         <CarrinhoVazio />
