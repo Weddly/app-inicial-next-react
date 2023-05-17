@@ -2,14 +2,16 @@ import useProcessando from "@/data/hooks/useProcessando"
 import useStarWars from "@/data/hooks/useStarWars"
 import { useState } from "react"
 
-export default function Personagens() {
-    const {personagens, obterPersonagem, processando } = useStarWars()
-   
+interface PersonagensProps {
+    personagens: any[]
+}
+
+export default function Personagens(props: PersonagensProps) {
 
     function renderizarPersonagens() {
         return (
         <ul>
-            {personagens.map((p: any) => (
+            {props.personagens.map((p: any) => (
                 <li key={p.name}>{p.name}</li>
             ))}
         </ul>
@@ -17,18 +19,8 @@ export default function Personagens() {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center">
-            {processando ? (
-                <div>Processando...</div>
-            ) : personagens.length > 0 ? (
-                renderizarPersonagens()
-            ) : (
-                <div>Nenhum personagem encontrado</div>
-            )} 
-            <button onClick={obterPersonagem} 
-                    className="bg-blue-500 p-2 mt-5">
-                        Obter
-            </button>
+        <div className="flex flex-col justify-center items-center bg-zinc-800 rounded-xl p-5">
+            <div>{renderizarPersonagens()}</div>
         </div>
     )
 }
