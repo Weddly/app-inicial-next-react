@@ -1,37 +1,34 @@
 import useProcessando from "@/data/hooks/useProcessando"
+import useStarWars from "@/data/hooks/useStarWars"
 import { useState } from "react"
 
 export default function Personagens() {
-    const {processando, iniciarProcessamento, finalizarProcessamento } = useProcessando()
+    const {personagens, obterPersonagem, processando } = useStarWars()
+   
 
-
-    async function simularChamadaAPI(){
-
-        return new Promise(resolve => {
-            setTimeout(() => {
-                resolve(1)
-            }, 6000)
-        })
-    }
-
-    async function obterPersonagem() {
-
-        try {
-            iniciarProcessamento()
-            await simularChamadaAPI()
-        } finally {
-            finalizarProcessamento()
-        }
+    function renderizarPersonagens() {
+        return (
+        <ul>
+            {personagens.map((p: any) => (
+                <li key={p.name}>{p.name}</li>
+            ))}
+        </ul>
+        )
     }
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center">
             {processando ? (
                 <div>Processando...</div>
-            ): (
-                <h1>Personagens</h1>
+            ) : personagens.length > 0 ? (
+                renderizarPersonagens()
+            ) : (
+                <div>Nenhum personagem encontrado</div>
             )} 
-            <button onClick={obterPersonagem} className="bg-blue-500 p-2 mt-5">Obter</button>
+            <button onClick={obterPersonagem} 
+                    className="bg-blue-500 p-2 mt-5">
+                        Obter
+            </button>
         </div>
     )
 }
