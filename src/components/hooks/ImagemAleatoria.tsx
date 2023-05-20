@@ -17,7 +17,6 @@ export default function ImagemAleatoria() {
                 bg-blue-500 px-4 py-2 rounded-md
             `} onClick={() => {
                     alterarPesquisa(valor)
-                    console.log(valor)
                 }}>
                 {valor}
             </button>
@@ -48,7 +47,6 @@ export default function ImagemAleatoria() {
                     value={tamanho}
                     className="bg-zinc-800 p-2 rounded-md outline-none w-full"
                     onChange={e => {
-                        console.log(e.target.value)
                         alterarTamanho(+e.target.value)
                     }} />
             </div>

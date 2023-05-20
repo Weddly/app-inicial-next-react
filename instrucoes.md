@@ -24,3 +24,6 @@
 ## Aula 5
 - [React] - Hooks... useState, useEffect e useCallback
 
+## Aula 6
+- [React] - Revisão de Hooks e aprimoramento do projeto
+
